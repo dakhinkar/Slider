@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="left-slide">
+        <div style="background-color: #fcb76a">
+          <h1>Eagle flying</h1>
+          <p>in the sunset</p>
+        </div>
+        <div style="background-color: #435f6a">
+          <h1>Castle</h1>
+          <p>castle</p>
+        </div>
+        <div style="background-color: #0175bc">
+          <h1>Blue Sky</h1>
+          <p>with its maintains</p>
+        </div>
+        <div style="background-color: #ebdcd7">
+          <h1>Nature</h1>
+          <p>nature</p>
+        </div>
+      </div>
+      <div class="right-slide">
+        <div class="nature-image"></div>
+        <div class="sky-image"></div>
+        <div class="castle-image"></div>
+        <div class="eagle-image"></div>
+      </div>
+      <div class="action-button">
+        <button class="down-button" onclick="counterHander(-1)">
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </button>
+        <button class="up-button" onclick="counterHander(1);">
+          <i class="fa fa-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </body>
+  <script>
+    let rightSide = document.querySelectorAll(".right-slide >div");
+    let leftSide = document.querySelectorAll(".left-slide >div");
+    let count = 0;
+    let prevCount = 0;
+    const counterHander = (num) => {
+      prevCount = count;
+      count = (count + num) % 4;
+      if(count < 0){
+        count = 3;
+      }
+      uIChangeHandler();
+    };
+
+    const uIChangeHandler = () => {
+      leftSide[prevCount].style.display = "none";
+      rightSide[3 - prevCount].style.display = "none";
+      leftSide[count].style.display = "flex";
+      rightSide[3 - count].style.display = "block";
+    };
+    uIChangeHandler();
+  </script>
+</html>
